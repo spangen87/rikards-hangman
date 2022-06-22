@@ -34,7 +34,7 @@ get_word()
 
 def play(word):
     """
-    Plays the game
+    Plays the game and checks if guessed letters are correct or not
     """
     word_completion = "_" * len(word)
     guessed = False
@@ -72,19 +72,26 @@ def play(word):
                 word_completion = word                        
         else:
             print("Not a valid guess. Try again.")
-
-        print(display_hangman(tries))
+       # print(display_hangman(tries))
         print(word_completion)
         print("\n")                        
+    if guessed:
+        print("You guessed the word! You win!")
+    else:
+        print(f"Sorry {name}, you lost... The word was: {word}.")    
+
 
 def show_rules():
     print(
         """
-        Choose a letter from A to Z. If it's not in the word, you loose a life.\n
+        Choose a letter from A to Z.\n
+        If it's not in the word, you loose a life.\n
         If it's correct it will show in the word.\n
         The game is over if you loose all lives.\n
         You win if you get all letters right!
+        \n
         """
+        f"Good luck, {name}!"
         )
     input("Press enter to return to menu")
     menu()
@@ -93,7 +100,12 @@ def show_rules():
 def main():
     """
     Runs the game
-    """               
+    """             
+    word = get_word()
+    play(word)
+    while input("Start over? (Y/N)").upper() == "Y":
+        word = get_word()
+        play(word)
 
 
 def menu():
@@ -118,8 +130,6 @@ def menu():
             tries = 5
         else:
             print("Please choose E, M or H")
-
-
     else:
         print("Please choose 1,2 or 3.")
         menu()
