@@ -1,24 +1,26 @@
 import random
 
 
-# Logo for the game. Generated with: https://www.ascii-art-generator.org/
-print(
+def hangman_logo():
+    # Logo for the game. Generated with: https://www.ascii-art-generator.org/
+    print(
     """
- _____  _ _                 _ _       _    _                                         
-|  __ \(_) |               | ( )     | |  | |                                        
-| |__) |_| | ____ _ _ __ __| |/ ___  | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __  
-|  _  /| | |/ / _` | '__/ _` | / __| |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
-| | \ \| |   < (_| | | | (_| | \__ \ | |  | | (_| | | | | (_| | | | | | | (_| | | | |
-|_|  \_\_|_|\_\__,_|_|  \__,_| |___/ |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
-                                                          __/ |                      
-                                                         |___/        
-    """
-)
-
-# Welcoming the player to the game
-print("\nWelcome to Rikard's Hangman!")
-name = input("Enter your name:")
-print(f"Good Luck, {name}!")
+    _____  _ _                 _ _       _    _                                         
+    |  __ \(_) |               | ( )     | |  | |                                        
+    | |__) |_| | ____ _ _ __ __| |/ ___  | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __  
+    |  _  /| | |/ / _` | '__/ _` | / __| |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+    | | \ \| |   < (_| | | | (_| | \__ \ | |  | | (_| | | | | (_| | | | | | | (_| | | | |
+    |_|  \_\_|_|\_\__,_|_|  \__,_| |___/ |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                                                            __/ |                      
+                                                            |___/        
+        """
+    )
+    # Welcoming the player to the game
+    print("\nWelcome to Rikard's Hangman!")
+    global name
+    name = input("Enter your name:")
+    print(f"Good Luck, {name}!")
+    return name
 
 
 def get_word():
@@ -29,7 +31,7 @@ def get_word():
     return random_word.upper()
 
 
-def play(word, lives):
+def play(word):
     """
     Plays the game and checks if guessed letters are correct or not
     """
@@ -102,6 +104,7 @@ def menu():
     print("Press 2 to show the rules")
     print("Press 3 to set difficulty")
     choice = input("Enter number:")
+    global lives
     lives = 7
     if choice == "1":
         main()
@@ -120,7 +123,7 @@ def menu():
         elif level == "H":
             lives = 5
             return lives
-            main(lives)
+            main()
         else:
             print("Please choose E, M or H")
             menu()
@@ -129,15 +132,17 @@ def menu():
         menu()
 
 
-menu()
-
-
-def main(lives):
+def main():
     """
     Runs the game
-    """             
+    """          
+    hangman_logo()
+    menu()   
     word = get_word()
-    play(word, lives)
+    play(word)
     while input("Start over? (Y/N)").upper() == "Y":
         word = get_word()
-        play(word, lives)
+        play(word)
+
+
+main()
