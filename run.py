@@ -26,10 +26,21 @@ def get_word():
     Gets a random word from words.txt
     """
     random_word = random.choice(open("words.txt", "r").read().split('\n'))
-    print(random_word.upper())
+    return random_word.upper()
 
 
 get_word()
+
+
+def play(word):
+    """
+    Plays the game
+    """
+    word_completion = "_" * len(word)
+    guessed = False
+    guessed_letters = []
+    guessed_words = []
+    tries = int()
 
 
 def show_rules():
@@ -64,7 +75,17 @@ def menu():
     elif choice == "2":
         show_rules()
     elif choice == "3":
-        print("choose_level")
+        level = input("Press E for Easy, M for Medium or H for Hard")
+        if level == "E": 
+            tries = 10
+        elif level == "M":
+            tries = 7
+        elif level == "H":
+            tries = 5
+        else:
+            print("Please choose E, M or H")
+
+
     else:
         print("Please choose 1,2 or 3.")
         menu()
