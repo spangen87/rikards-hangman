@@ -40,8 +40,42 @@ def play(word):
     guessed = False
     guessed_letters = []
     guessed_words = []
-    tries = int()
+    tries = 7
+    while not guessed and tries > 0:
+        guess = input("Guess a letter:").upper()
+        if len(guess) == 1 and guess.isalpha():
+            if guess in guessed_letters:
+                print(f"You have already guesssed {guess}. Try another letter.")
+            elif guess not in word:
+                print(f"{guess} is not in the word.")
+                tries -= 1
+                guessed_letters.append(guess)
+            else:
+                print(f"Nicely done! {guess} is in the word!")
+                guessed_letters.append(guess)
+                word_as_list = list(word_completion)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                    word_as_list[index] = guess
+                word_completion = "" .join(word_as_list)
+                if "_" not in word_completion:
+                    guessed = True                    
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print(f"You already guessed {guess}")
+            elif guess != word:
+                print(f"{guess} is not the correct word.")
+                tries -= 1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                word_completion = word                        
+        else:
+            print("Not a valid guess. Try again.")
 
+        print(display_hangman(tries))
+        print(word_completion)
+        print("\n")                        
 
 def show_rules():
     print(
