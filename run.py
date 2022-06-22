@@ -29,10 +29,7 @@ def get_word():
     return random_word.upper()
 
 
-get_word()
-
-
-def play(word):
+def play(word, lives):
     """
     Plays the game and checks if guessed letters are correct or not
     """
@@ -40,7 +37,7 @@ def play(word):
     guessed = False
     guessed_letters = []
     guessed_words = []
-    tries = 7
+    tries = lives
     while not guessed and tries > 0:
         guess = input("Guess a letter:").upper()
         if len(guess) == 1 and guess.isalpha():
@@ -97,17 +94,6 @@ def show_rules():
     menu()
 
 
-def main():
-    """
-    Runs the game
-    """             
-    word = get_word()
-    play(word)
-    while input("Start over? (Y/N)").upper() == "Y":
-        word = get_word()
-        play(word)
-
-
 def menu():
     """
     Presents choices to the player
@@ -116,20 +102,28 @@ def menu():
     print("Press 2 to show the rules")
     print("Press 3 to set difficulty")
     choice = input("Enter number:")
+    lives = 7
     if choice == "1":
         main()
     elif choice == "2":
         show_rules()
     elif choice == "3":
-        level = input("Press E for Easy, M for Medium or H for Hard")
+        level = input("Press E for Easy, M for Medium or H for Hard").upper()
         if level == "E": 
-            tries = 10
+            lives = 10
+            return lives
+            main()
         elif level == "M":
-            tries = 7
+            lives = 7
+            return lives
+            main()
         elif level == "H":
-            tries = 5
+            lives = 5
+            return lives
+            main(lives)
         else:
             print("Please choose E, M or H")
+            menu()
     else:
         print("Please choose 1,2 or 3.")
         menu()
@@ -138,3 +132,12 @@ def menu():
 menu()
 
 
+def main(lives):
+    """
+    Runs the game
+    """             
+    word = get_word()
+    play(word, lives)
+    while input("Start over? (Y/N)").upper() == "Y":
+        word = get_word()
+        play(word, lives)
