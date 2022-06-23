@@ -2,7 +2,9 @@ import random
 
 
 def hangman_logo():
-    # Logo for the game. Generated with: https://www.ascii-art-generator.org/
+    """
+    Logo for the game. Generated with: https://www.ascii-art-generator.org/
+    """
     print(
     """
     _____  _ _                 _ _       _    _                                         
@@ -70,10 +72,9 @@ def play(word):
                 guessed_words.append(guess)
             else:
                 guessed = True
-                word_completion = word                        
+                word_completion = word                       
         else:
             print("Not a valid guess. Try again.")
-       # print(display_hangman(tries))
         print(word_completion)
         print("\n")                        
     if guessed:
@@ -109,7 +110,8 @@ def menu():
     global lives
     lives = 7
     if choice == "1":
-        main()
+        word = get_word()
+        play(word)
     elif choice == "2":
         show_rules()
     elif choice == "3":
@@ -134,8 +136,11 @@ def menu():
             else:
                 print("Please choose E, M or H")
                 level = False
+    else:
+        print('Please choose 1,2 or 3.')
+        menu()
 
-
+        
 def main():
     """
     Runs the game
