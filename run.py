@@ -113,25 +113,27 @@ def menu():
     elif choice == "2":
         show_rules()
     elif choice == "3":
-        level = input("Press E for Easy, M for Medium or H for Hard").upper()
-        if level == "E": 
-            lives = 10
-            return lives
-            main()
-        elif level == "M":
-            lives = 7
-            return lives
-            main()
-        elif level == "H":
-            lives = 5
-            return lives
-            main()
-        else:
-            print("Please choose E, M or H")
-            menu()
-    else:
-        print("Please choose 1,2 or 3.")
-        menu()
+        level = False
+        while not level:
+            level = input("Press E for Easy, M for Medium or H for Hard").upper()
+            if level == "E": 
+                level = True
+                lives = 10
+                return lives
+                main()
+            elif level == "M":
+                level = True
+                lives = 7
+                return lives
+                main()
+            elif level == "H":
+                level = True
+                lives = 5
+                return lives
+                main()
+            else:
+                print("Please choose E, M or H")
+                level = False
 
 
 def main():
@@ -140,20 +142,14 @@ def main():
     """          
     hangman_logo()
     word = get_word()
-    menu()   
+    menu()
     play(word)
-  #  if play_again.upper() == "N":
-         
     while input("Start over? (Y/N)").upper() == "Y":
         word = get_word()
         play(word)
     else:
         main()    
-  
-   # while input("Start over? (Y/N)").upper() == "Y":
-    #    word = get_word()
-     #   play(word)
-      #  if input()
+
 
 main()
 
