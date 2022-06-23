@@ -18,14 +18,16 @@ def hangman_logo():
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!")
     global name
-    name = input("Enter your name:")
+    name = input("Enter your name: \n")
     print(f"Good Luck, {name}!")
+    print("\n")
     return name
 
 
 def get_word():
     """
-    Gets a random word from words.txt
+    Gets a random word from words.txt. 
+    List generated from https://www.randomlists.com/random-words
     """
     random_word = random.choice(open("words.txt", "r").read().split('\n'))
     return random_word.upper()
@@ -103,7 +105,7 @@ def menu():
     print("Press 1 to start the game")
     print("Press 2 to show the rules")
     print("Press 3 to set difficulty")
-    choice = input("Enter number:")
+    choice = input("Enter number: ")
     global lives
     lives = 7
     if choice == "1":
