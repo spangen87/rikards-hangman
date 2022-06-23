@@ -139,12 +139,22 @@ def main():
     Runs the game
     """          
     hangman_logo()
-    menu()   
     word = get_word()
+    menu()   
     play(word)
+  #  if play_again.upper() == "N":
+         
     while input("Start over? (Y/N)").upper() == "Y":
         word = get_word()
         play(word)
-
+    else:
+        main()    
+  
+   # while input("Start over? (Y/N)").upper() == "Y":
+    #    word = get_word()
+     #   play(word)
+      #  if input()
 
 main()
+
+
