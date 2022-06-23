@@ -38,8 +38,10 @@ def get_word():
 def play(word):
     """
     Plays the game and checks if guessed letters are correct or not
+    Credits for inspiration to: https://youtu.be/m4nEnsavl6w
     """
-    word_completion = "_" * len(word)
+    word_progress = "_" * len(word)
+    print(word_progress)
     guessed = False
     guessed_letters = []
     guessed_words = []
@@ -56,12 +58,12 @@ def play(word):
             else:
                 print(f"Nicely done! {guess} is in the word!")
                 guessed_letters.append(guess)
-                word_as_list = list(word_completion)
+                word_as_list = list(word_progress)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index] = guess
-                word_completion = "" .join(word_as_list)
-                if "_" not in word_completion:
+                word_progress = "" .join(word_as_list)
+                if "_" not in word_progress:
                     guessed = True                    
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
@@ -72,13 +74,13 @@ def play(word):
                 guessed_words.append(guess)
             else:
                 guessed = True
-                word_completion = word                       
+                word_progress = word                       
         else:
             print("Not a valid guess. Try again.")
-        print(word_completion)
+        print(word_progress)
         print("\n")                        
     if guessed:
-        print("You guessed the word! You win!")
+        print(f"You guessed the word! You win, {name}!")
     else:
         print(f"Sorry {name}, you lost... The word was: {word}.")    
 
@@ -140,7 +142,7 @@ def menu():
         print('Please choose 1,2 or 3.')
         menu()
 
-        
+
 def main():
     """
     Runs the game
