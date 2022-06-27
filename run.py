@@ -60,6 +60,59 @@ def play(word):
             elif guess not in word:
                 print(f"{guess} is not in the word.")
                 tries -= 1
+                if tries == 0:
+                    # Prints the hangman status
+                    print("""
+                    ___________
+                    |/        |
+                    |         O
+                    |        /|\\
+                    |         |
+                    |        / \\
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 1:
+                    print("""
+                    ___________
+                    |/        |
+                    |         O
+                    |        /|\\
+                    |         |
+                    |        /
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 2:
+                    print("""
+                    __________
+                    |/        |
+                    |         O
+                    |        /|\\
+                    |         |
+                    |
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 3:
+                    print("""
+                    __________
+                    |/        |
+                    |         O
+                    |        /|
+                    |         |
+                    |
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
                 guessed_letters.append(guess)
             else:
                 print(f"Nicely done! {guess} is in the word!")
@@ -77,7 +130,7 @@ def play(word):
             elif guess != word:
                 print(f"{guess} is not the correct word.")
                 tries -= 1
-                guessed_words.append(guess)
+                guessed_words.append(guess) 
             else:
                 guessed = True
                 word_progress = word                       
