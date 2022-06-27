@@ -10,7 +10,7 @@ def hangman_logo():
      ____  _ _                 _ _     
     |  _ \(_) | ____ _ _ __ __| ( )___ 
     | |_) | | |/ / _` | '__/ _` |// __|
-    |  _ <| |   < (_| | | | (_| | \__ \
+    |  _ <| |   < (_| | | | (_| | \__ /
     |_| \_\_|_|\_\__,_|_|  \__,_| |___/
 
      _   _                                         
@@ -124,7 +124,9 @@ def menu():
     elif choice == "3":
         level = False
         while not level:
-            level = input("Press E for Easy, M for Medium or H for Hard").upper()
+            level = input(
+                "Press E for Easy, M for Medium or H for Hard"
+                ).upper()
             if level == "E": 
                 level = True
                 lives = 10
