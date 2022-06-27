@@ -5,6 +5,7 @@ import os
 # System call
 os.system("")
 
+
 class style():
     """
     Class of fifferent styles
@@ -23,30 +24,26 @@ class style():
     RESET = '\033[0m'
 
 
-
 def hangman_logo():
     """
     Logo for the game. Generated with: https://www.ascii-art-generator.org/
     """
-    print(style.CYAN +
-    """
-      ____  _ _                 _ _     
-    |  _ \(_) | ____ _ _ __ __| ( )___ 
-    | |_) | | |/ / _` | '__/ _` |// __|
-    |  _ <| |   < (_| | | | (_| | \__ /
-    |_| \_\_|_|\_\__,_|_|  \__,_| |___/
+    print(style.CYAN + """
+        ____  _ _                 _ _     
+        |  _ \(_) | ____ _ _ __ __| ( )___ 
+        | |_) | | |/ / _` | '__/ _` |// __|
+        |  _ <| |   < (_| | | | (_| | \__ /
+        |_| \_\_|_|\_\__,_|_|  \__,_| |___/
 
-     _   _                                         
-    | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  
-    | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
-    |  _  | (_| | | | | (_| | | | | | | (_| | | | |
-    |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
-                   |___/                       
-    """
-    + style.RESET)
-    print(style.RED +
-        """
-         ___________
+        _   _                                         
+        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  
+        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+        |  _  | (_| | | | | (_| | | | | | | (_| | | | |
+        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                            |___/                      
+    """ + style.RESET)
+    print(style.RED + """
+        ___________
         |/        |
         |         O
         |        /|\\
@@ -54,8 +51,7 @@ def hangman_logo():
         |        / \\
         |\\
         ========
-        """
-        + style.RESET)
+        """ + style.RESET)
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!\n")
     global name
@@ -84,13 +80,13 @@ def play(word):
     print(word_progress)
     guessed = False
     guessed_letters = []
-    guessed_words = []
     tries = lives
     while not guessed and tries > 0:
         guess = input("Guess a letter:").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(style.YELLOW + f"You have already guesssed {guess}. Try another letter." + style.RESET)
+                print(style.YELLOW + f"""You have already guesssed {guess}.
+                Try another letter.""" + style.RESET)
             elif guess not in word:
                 print(style.RED + f"{guess} is not in the word." + style.RESET)
                 tries -= 1
@@ -245,12 +241,12 @@ def play(word):
                     |
                     ========
                     """ + style.RESET)
-                    print(f"You have {tries} live(s) left.")                                            
+                    print(f"You have {tries} live(s) left.")
 
                 guessed_letters.append(guess)
             else:
-                print(style.GREEN + f"Nicely done! {guess} is in the word!"
-                + style.RESET)
+                print(style.GREEN + f"""Nicely done! {guess} 
+                is in the word!""" + style.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_progress)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -258,11 +254,11 @@ def play(word):
                     word_as_list[index] = guess
                 word_progress = "" .join(word_as_list)
                 if "_" not in word_progress:
-                    guessed = True                                      
+                    guessed = True
         else:
             print(style.YELLOW + "Not a valid guess. Try again." + style.RESET)
         print(word_progress)
-        print("\n")                        
+        print("\n")
     if guessed:
         print(style.GREEN + """
         __  __               _       ___       __
@@ -271,7 +267,8 @@ def play(word):
         / / /_/ / /_/ /    | |/ |/ / / / / /_/  
         /_/\____/\__,_/     |__/|__/_/_/ /_(_)   
         """ + style.RESET)
-        print(style.GREEN + f"You guessed the word! You win, {name}!" + style.RESET)
+        print(style.GREEN + f"""You guessed the word!
+        You win, {name}!""" + style.RESET)
     else:
         print(style.RED + """
         __  __               __                          __
@@ -280,7 +277,8 @@ def play(word):
         / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/  
         /_/\____/\__,_/  /_____/\____/\____/____/\___(_)   
         """ + style.RESET)
-        print(style.RED + f"Sorry {name}, you lost... The word was: {word}." + style.RESET)    
+        print(style.RED + f"""Sorry {name}, you lost...
+        The word was: {word}.""" + style.RESET)
 
 
 def show_rules():
@@ -316,10 +314,9 @@ def menu():
         print(style.RED + "Hard = 6 lives\n" + style.RESET)
         level = False
         while not level:
-            level = input(style.YELLOW +
-                "Press E for Easy, M for Medium or H for Hard: "
-                + style.RESET).upper()
-            if level == "E": 
+            level = input(style.YELLOW + """Press E for Easy, M for
+            Medium or H for Hard: """ + style.RESET).upper()
+            if level == "E":
                 level = True
                 lives = 12
                 return lives
@@ -342,7 +339,7 @@ def menu():
 def main():
     """
     Runs the game
-    """          
+    """
     hangman_logo()
     word = get_word()
     menu()
@@ -351,9 +348,7 @@ def main():
         word = get_word()
         play(word)
     else:
-        main()    
+        main()
 
 
 main()
-
-
