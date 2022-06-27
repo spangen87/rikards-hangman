@@ -72,7 +72,6 @@ def play(word):
                     |\\
                     ========
                     """)
-                    print(f"You have {tries} live(s) left.")
 
                 if tries == 1:
                     print("""
@@ -112,6 +111,107 @@ def play(word):
                     ========
                     """)
                     print(f"You have {tries} live(s) left.")
+
+                if tries == 4:
+                    print("""
+                    __________
+                    |/        |
+                    |         O
+                    |         |
+                    |         |
+                    |
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 5:
+                    print("""
+                    __________
+                    |/        |
+                    |         O
+                    |
+                    |
+                    |
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 6:
+                    print("""
+                    __________
+                    |/
+                    |
+                    |
+                    |
+                    |
+                    |\\
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 7:
+                    print("""
+                    __________
+                    |/
+                    |
+                    |
+                    |
+                    |
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 8:
+                    print("""
+                    |/
+                    |
+                    |
+                    |
+                    |
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 9:
+                    print("""
+                    |
+                    |
+                    |
+                    |
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 10:
+                    print("""
+                    |
+                    |
+                    |
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 11:
+                    print("""
+                    |
+                    |
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")
+
+                if tries == 12:
+                    print("""
+                    |
+                    ========
+                    """)
+                    print(f"You have {tries} live(s) left.")                                            
 
                 guessed_letters.append(guess)
             else:
