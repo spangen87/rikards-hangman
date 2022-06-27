@@ -1,10 +1,10 @@
 import random
 import os
 
+
 # System call
 os.system("")
 
-# Class of different styles
 class style():
     """
     Class of fifferent styles
@@ -22,7 +22,6 @@ class style():
     UNDERLINE = '\033[4m'
     RESET = '\033[0m'
 
-print(style.YELLOW + "Hello, World!" +style.RESET)
 
 
 def hangman_logo():
@@ -31,7 +30,7 @@ def hangman_logo():
     """
     print(style.CYAN +
     """
-     ____  _ _                 _ _     
+      ____  _ _                 _ _     
     |  _ \(_) | ____ _ _ __ __| ( )___ 
     | |_) | | |/ / _` | '__/ _` |// __|
     |  _ <| |   < (_| | | | (_| | \__ /
@@ -43,7 +42,6 @@ def hangman_logo():
     |  _  | (_| | | | | (_| | | | | | | (_| | | | |
     |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
                    |___/                       
-
     """
     + style.RESET)
     print(style.RED +
@@ -92,9 +90,9 @@ def play(word):
         guess = input("Guess a letter:").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(f"You have already guesssed {guess}. Try another letter.")
+                print(style.YELLOW + f"You have already guesssed {guess}. Try another letter." + style.RESET)
             elif guess not in word:
-                print(f"{guess} is not in the word.")
+                print(style.RED + f"{guess} is not in the word." + style.RESET)
                 tries -= 1
                 if tries == 0:
                     # Prints the hangman status
@@ -251,7 +249,8 @@ def play(word):
 
                 guessed_letters.append(guess)
             else:
-                print(f"Nicely done! {guess} is in the word!")
+                print(style.GREEN + f"Nicely done! {guess} is in the word!"
+                + style.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_progress)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -265,8 +264,22 @@ def play(word):
         print(word_progress)
         print("\n")                        
     if guessed:
+        print(style.GREEN + """
+        __  __               _       ___       __
+        \ \/ /___  __  __   | |     / (_)___  / /
+        \  / __ \/ / / /   | | /| / / / __ \/ / 
+        / / /_/ / /_/ /    | |/ |/ / / / / /_/  
+        /_/\____/\__,_/     |__/|__/_/_/ /_(_)   
+        """ + style.RESET)
         print(style.GREEN + f"You guessed the word! You win, {name}!" + style.RESET)
     else:
+        print(style.RED + """
+        __  __               __                          __
+        \ \/ /___  __  __   / /   ____  ____  ________  / /
+        \  / __ \/ / / /  / /   / __ \/ __ \/ ___/ _ \/ / 
+        / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/  
+        /_/\____/\__,_/  /_____/\____/\____/____/\___(_)   
+        """ + style.RESET)
         print(style.RED + f"Sorry {name}, you lost... The word was: {word}." + style.RESET)    
 
 
@@ -292,7 +305,7 @@ def menu():
     """
     print("Press 1 to start the game")
     print("Press 2 to show the rules \n")
-    choice = input("Enter number: \n")
+    choice = input(style.YELLOW + "Enter number: \n" + style.RESET)
     global lives
     lives = 0
     if choice == "2":
@@ -303,9 +316,9 @@ def menu():
         print(style.RED + "Hard = 6 lives\n" + style.RESET)
         level = False
         while not level:
-            level = input(
+            level = input(style.YELLOW +
                 "Press E for Easy, M for Medium or H for Hard: "
-                ).upper()
+                + style.RESET).upper()
             if level == "E": 
                 level = True
                 lives = 12
@@ -319,7 +332,7 @@ def menu():
                 lives = 6
                 return lives
             else:
-                print("Please choose E, M or H")
+                print(style.YELLOW + "Please choose E, M or H" + style.RESET)
                 level = False
     else:
         print(style.YELLOW + 'Please choose 1 or 2.' + style.RESET)
