@@ -1,11 +1,35 @@
 import random
+import os
+
+# System call
+os.system("")
+
+# Class of different styles
+class style():
+    """
+    Class of fifferent styles
+    Creds for solution:
+    https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal
+    """
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
+print(style.YELLOW + "Hello, World!" +style.RESET)
 
 
 def hangman_logo():
     """
     Logo for the game. Generated with: https://www.ascii-art-generator.org/
     """
-    print(
+    print(style.CYAN +
     """
      ____  _ _                 _ _     
     |  _ \(_) | ____ _ _ __ __| ( )___ 
@@ -21,8 +45,9 @@ def hangman_logo():
                    |___/                       
 
     """
-    )
-    print("""
+    + style.RESET)
+    print(style.RED +
+        """
          ___________
         |/        |
         |         O
@@ -31,13 +56,14 @@ def hangman_logo():
         |        / \\
         |\\
         ========
-        """)
+        """
+        + style.RESET)
     # Welcoming the player to the game
-    print("\nWelcome to Rikard's Hangman!")
+    print("\nWelcome to Rikard's Hangman!\n")
     global name
     name = input("Enter your nickname: \n")
     print("\n")
-    print(f"Good Luck, {name}!")
+    print(style.CYAN + f"Good Luck, {name}!" + style.RESET)
     print("\n")
     return name
 
@@ -235,13 +261,13 @@ def play(word):
                 if "_" not in word_progress:
                     guessed = True                                      
         else:
-            print("Not a valid guess. Try again.")
+            print(style.YELLOW + "Not a valid guess. Try again." + style.RESET)
         print(word_progress)
         print("\n")                        
     if guessed:
-        print(f"You guessed the word! You win, {name}!")
+        print(style.GREEN + f"You guessed the word! You win, {name}!" + style.RESET)
     else:
-        print(f"Sorry {name}, you lost... The word was: {word}.")    
+        print(style.RED + f"Sorry {name}, you lost... The word was: {word}." + style.RESET)    
 
 
 def show_rules():
@@ -254,9 +280,9 @@ def show_rules():
         You win if you get all letters right!
         \n
         """
-        f"Good luck, {name}!"
-        )
-    input("Press enter to return to menu")
+        + style.CYAN + f"Good luck, {name}!"
+        + style.RESET)
+    input(style.YELLOW + "Press enter to return to menu" + style.RESET)
     menu()
 
 
@@ -272,9 +298,9 @@ def menu():
     if choice == "2":
         show_rules()
     elif choice == "1":
-        print("Easy = 12 lives")
-        print("Medium = 8 lives")
-        print("Hard = 6 lives\n")
+        print(style.GREEN + "Easy = 12 lives" + style.RESET)
+        print(style.CYAN + "Medium = 8 lives" + style.RESET)
+        print(style.RED + "Hard = 6 lives\n" + style.RESET)
         level = False
         while not level:
             level = input(
@@ -296,7 +322,7 @@ def menu():
                 print("Please choose E, M or H")
                 level = False
     else:
-        print('Please choose 1 or 2.')
+        print(style.YELLOW + 'Please choose 1 or 2.' + style.RESET)
         menu()
 
 
@@ -308,7 +334,7 @@ def main():
     word = get_word()
     menu()
     play(word)
-    while input("Start over? (Y/N)").upper() == "Y":
+    while input(style.YELLOW + "Start over? (Y/N)" + style.RESET).upper() == "Y":
         word = get_word()
         play(word)
     else:
