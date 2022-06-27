@@ -22,6 +22,16 @@ def hangman_logo():
 
     """
     )
+    print("""
+         ___________
+        |/        |
+        |         O
+        |        /|\\
+        |         |
+        |        / \\
+        |\\
+        ========
+        """)
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!")
     global name
@@ -223,17 +233,7 @@ def play(word):
                     word_as_list[index] = guess
                 word_progress = "" .join(word_as_list)
                 if "_" not in word_progress:
-                    guessed = True                    
-        elif len(guess) == len(word) and guess.isalpha():
-            if guess in guessed_words:
-                print(f"You already guessed {guess}")
-            elif guess != word:
-                print(f"{guess} is not the correct word.")
-                tries -= 1
-                guessed_words.append(guess) 
-            else:
-                guessed = True
-                word_progress = word                       
+                    guessed = True                                      
         else:
             print("Not a valid guess. Try again.")
         print(word_progress)
