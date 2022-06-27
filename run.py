@@ -25,7 +25,8 @@ def hangman_logo():
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!")
     global name
-    name = input("Enter your name: \n")
+    name = input("Enter your nickname: \n")
+    print("\n")
     print(f"Good Luck, {name}!")
     print("\n")
     return name
@@ -111,42 +112,38 @@ def menu():
     Presents choices to the player
     """
     print("Press 1 to start the game")
-    print("Press 2 to show the rules")
-    print("Press 3 to set difficulty")
-    choice = input("Enter number: ")
+    print("Press 2 to show the rules \n")
+    choice = input("Enter number: \n")
     global lives
-    lives = 7
-    if choice == "1":
-        word = get_word()
-        play(word)
-    elif choice == "2":
+    lives = 0
+    if choice == "2":
         show_rules()
-    elif choice == "3":
+    elif choice == "1":
+        print("Easy = 12 lives")
+        print("Medium = 8 lives")
+        print("Hard = 6 lives\n")
         level = False
         while not level:
             level = input(
-                "Press E for Easy, M for Medium or H for Hard"
+                "Press E for Easy, M for Medium or H for Hard: "
                 ).upper()
             if level == "E": 
                 level = True
-                lives = 10
+                lives = 12
                 return lives
-                main()
             elif level == "M":
                 level = True
-                lives = 7
+                lives = 8
                 return lives
-                main()
             elif level == "H":
                 level = True
-                lives = 5
+                lives = 6
                 return lives
-                main()
             else:
                 print("Please choose E, M or H")
                 level = False
     else:
-        print('Please choose 1,2 or 3.')
+        print('Please choose 1 or 2.')
         menu()
 
 
