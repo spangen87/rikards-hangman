@@ -96,7 +96,7 @@ def play(word):
                 tries -= 1
                 if tries == 0:
                     # Prints the hangman status
-                    print("""
+                    print(style.RED + """
                     ___________
                     |/        |
                     |         O
@@ -105,10 +105,10 @@ def play(word):
                     |        / \\
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
 
                 if tries == 1:
-                    print("""
+                    print(style.RED + """
                     ___________
                     |/        |
                     |         O
@@ -117,11 +117,11 @@ def play(word):
                     |        /
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 2:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/        |
                     |         O
@@ -130,11 +130,11 @@ def play(word):
                     |
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 3:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/        |
                     |         O
@@ -143,11 +143,11 @@ def play(word):
                     |
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 4:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/        |
                     |         O
@@ -156,11 +156,11 @@ def play(word):
                     |
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 5:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/        |
                     |         O
@@ -169,11 +169,11 @@ def play(word):
                     |
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 6:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/
                     |
@@ -182,11 +182,11 @@ def play(word):
                     |
                     |\\
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 7:
-                    print("""
+                    print(style.RED + """
                     __________
                     |/
                     |
@@ -195,11 +195,11 @@ def play(word):
                     |
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 8:
-                    print("""
+                    print(style.RED + """
                     |/
                     |
                     |
@@ -207,44 +207,44 @@ def play(word):
                     |
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 9:
-                    print("""
+                    print(style.RED + """
                     |
                     |
                     |
                     |
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 10:
-                    print("""
+                    print(style.RED + """
                     |
                     |
                     |
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 11:
-                    print("""
+                    print(style.RED + """
                     |
                     |
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 12:
-                    print("""
+                    print(style.RED + """
                     |
                     ========
-                    """)
+                    """ + style.RESET)
                     print(f"You have {tries} live(s) left.")                                            
 
                 guessed_letters.append(guess)
