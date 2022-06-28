@@ -348,6 +348,7 @@ def main():
         style.YELLOW + "Start over? (Y/N)" + style.RESET
                 ).upper() == "Y":
         word = get_word()
+        menu()
         play(word)
     else:
         main()
