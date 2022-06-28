@@ -28,7 +28,7 @@ def hangman_logo():
     """
     Logo for the game. Generated with: https://www.ascii-art-generator.org/
     """
-    print(style.CYAN + """
+    print(style.BLUE + """
         ____  _ _                 _ _
         |  _ \(_) | ____ _ _ __ __| ( )___
         | |_) | | |/ / _` | '__/ _` |// __|
@@ -42,16 +42,7 @@ def hangman_logo():
         |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
                             |___/
     """ + style.RESET)
-    print(style.RED + """
-        ___________
-        |/        |
-        |         O
-        |        /|\\
-        |         |
-        |        / \\
-        |\\
-        ========
-        """ + style.RESET)
+
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!\n")
     global name
@@ -76,7 +67,8 @@ def play(word):
     Plays the game and checks if guessed letters are correct or not
     Credits for inspiration to: https://youtu.be/m4nEnsavl6w
     """
-    word_progress = "_" * len(word)
+    word_progress = "-" * len(word)
+    print(f"The word has {len(word)} letters.")
     print(word_progress)
     guessed = False
     guessed_letters = []
@@ -85,8 +77,10 @@ def play(word):
         guess = input("Guess a letter:").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(style.YELLOW + f"""You have already guesssed {guess}.
-                Try another letter.""" + style.RESET)
+                print(
+                    style.YELLOW + f"""
+You have already guesssed {guess}. Try another letter.
+                    """ + style.RESET)
             elif guess not in word:
                 print(style.RED + f"{guess} is not in the word." + style.RESET)
                 tries -= 1
@@ -245,8 +239,9 @@ def play(word):
 
                 guessed_letters.append(guess)
             else:
-                print(style.GREEN + f"""Nicely done! {guess}
-                is in the word!""" + style.RESET)
+                print(style.GREEN + f"""
+Nicely done! {guess} is in the word!
+                """ + style.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_progress)
                 indices = [
@@ -255,7 +250,7 @@ def play(word):
                 for index in indices:
                     word_as_list[index] = guess
                 word_progress = "" .join(word_as_list)
-                if "_" not in word_progress:
+                if "-" not in word_progress:
                     guessed = True
         else:
             print(style.YELLOW + "Not a valid guess. Try again." + style.RESET)
@@ -269,8 +264,9 @@ def play(word):
         / / /_/ / /_/ /    | |/ |/ / / / / /_/
         /_/\____/\__,_/     |__/|__/_/_/ /_(_)
         """ + style.RESET)
-        print(style.GREEN + f"""You guessed the word!
-        You win, {name}!""" + style.RESET)
+        print(style.GREEN + f"""
+You guessed the word! You win, {name}!
+        """ + style.RESET)
     else:
         print(style.RED + """
         __  __               __                          __
@@ -279,21 +275,23 @@ def play(word):
         / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/
         /_/\____/\__,_/  /_____/\____/\____/____/\___(_)
         """ + style.RESET)
-        print(style.RED + f"""Sorry {name}, you lost...
-        The word was: {word}.""" + style.RESET)
+        print(style.RED + f"""
+Sorry {name}, you lost... The word was: {word}.
+        """ + style.RESET)
 
 
 def show_rules():
     print(
         """
-        Choose a letter from A to Z.\n
-        If it's not in the word, you loose a life.\n
-        If it's correct it will show in the word.\n
-        The game is over if you loose all lives.\n
-        You win if you get all letters right!
-        \n
-        """ + style.CYAN + f"Good luck, {name}!" + style.RESET)
-    input(style.YELLOW + "Press enter to return to menu" + style.RESET)
+    Choose a letter from A to Z.\n
+    If it's not in the word, you loose a life.\n
+    If it's correct it will show in the word.\n
+    The game is over if you loose all lives.\n
+    You win if you get all letters right!
+    \n
+        """)
+    print(style.CYAN + f"Enjoy the game, {name}!" + style.RESET)
+    input(style.YELLOW + "Press ENTER to return to menu.\n" + style.RESET)
     menu()
 
 
@@ -314,8 +312,9 @@ def menu():
         print(style.RED + "Hard = 6 lives\n" + style.RESET)
         level = False
         while not level:
-            level = input(style.YELLOW + """Press E for Easy, M for
-            Medium or H for Hard: """ + style.RESET).upper()
+            level = input(style.YELLOW + """
+Press E for Easy, M for Medium or H for Hard:
+            """ + style.RESET).upper()
             if level == "E":
                 level = True
                 lives = 12
@@ -332,7 +331,7 @@ def menu():
                 print(style.YELLOW + "Please choose E, M or H" + style.RESET)
                 level = False
     else:
-        print(style.YELLOW + 'Please choose 1 or 2.' + style.RESET)
+        print(style.YELLOW + "Please choose 1 or 2." + style.RESET)
         menu()
 
 
