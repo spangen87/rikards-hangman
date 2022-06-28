@@ -29,18 +29,18 @@ def hangman_logo():
     Logo for the game. Generated with: https://www.ascii-art-generator.org/
     """
     print(style.CYAN + """
-        ____  _ _                 _ _     
-        |  _ \(_) | ____ _ _ __ __| ( )___ 
+        ____  _ _                 _ _
+        |  _ \(_) | ____ _ _ __ __| ( )___
         | |_) | | |/ / _` | '__/ _` |// __|
         |  _ <| |   < (_| | | | (_| | \__ /
         |_| \_\_|_|\_\__,_|_|  \__,_| |___/
 
-        _   _                                         
-        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  
-        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+         _   _
+        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __
+        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \\
         |  _  | (_| | | | | (_| | | | | | | (_| | | | |
         |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
-                            |___/                      
+                            |___/
     """ + style.RESET)
     print(style.RED + """
         ___________
@@ -64,7 +64,7 @@ def hangman_logo():
 
 def get_word():
     """
-    Gets a random word from words.txt. 
+    Gets a random word from words.txt.
     List generated from https://www.randomlists.com/random-words
     """
     random_word = random.choice(open("words.txt", "r").read().split('\n'))
@@ -245,11 +245,13 @@ def play(word):
 
                 guessed_letters.append(guess)
             else:
-                print(style.GREEN + f"""Nicely done! {guess} 
+                print(style.GREEN + f"""Nicely done! {guess}
                 is in the word!""" + style.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_progress)
-                indices = [i for i, letter in enumerate(word) if letter == guess]
+                indices = [
+                    i for i, letter in enumerate(word) if letter == guess
+                    ]
                 for index in indices:
                     word_as_list[index] = guess
                 word_progress = "" .join(word_as_list)
@@ -263,9 +265,9 @@ def play(word):
         print(style.GREEN + """
         __  __               _       ___       __
         \ \/ /___  __  __   | |     / (_)___  / /
-        \  / __ \/ / / /   | | /| / / / __ \/ / 
-        / / /_/ / /_/ /    | |/ |/ / / / / /_/  
-        /_/\____/\__,_/     |__/|__/_/_/ /_(_)   
+        \  / __ \/ / / /   | | /| / / / __ \/ /
+        / / /_/ / /_/ /    | |/ |/ / / / / /_/
+        /_/\____/\__,_/     |__/|__/_/_/ /_(_)
         """ + style.RESET)
         print(style.GREEN + f"""You guessed the word!
         You win, {name}!""" + style.RESET)
@@ -273,9 +275,9 @@ def play(word):
         print(style.RED + """
         __  __               __                          __
         \ \/ /___  __  __   / /   ____  ____  ________  / /
-        \  / __ \/ / / /  / /   / __ \/ __ \/ ___/ _ \/ / 
-        / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/  
-        /_/\____/\__,_/  /_____/\____/\____/____/\___(_)   
+        \  / __ \/ / / /  / /   / __ \/ __ \/ ___/ _ \/ /
+        / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/
+        /_/\____/\__,_/  /_____/\____/\____/____/\___(_)
         """ + style.RESET)
         print(style.RED + f"""Sorry {name}, you lost...
         The word was: {word}.""" + style.RESET)
@@ -290,9 +292,7 @@ def show_rules():
         The game is over if you loose all lives.\n
         You win if you get all letters right!
         \n
-        """
-        + style.CYAN + f"Good luck, {name}!"
-        + style.RESET)
+        """ + style.CYAN + f"Good luck, {name}!" + style.RESET)
     input(style.YELLOW + "Press enter to return to menu" + style.RESET)
     menu()
 
@@ -344,7 +344,9 @@ def main():
     word = get_word()
     menu()
     play(word)
-    while input(style.YELLOW + "Start over? (Y/N)" + style.RESET).upper() == "Y":
+    while input(
+        style.YELLOW + "Start over? (Y/N)" + style.RESET
+                ).upper() == "Y":
         word = get_word()
         play(word)
     else:
