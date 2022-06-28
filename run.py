@@ -74,6 +74,7 @@ def play(word):
     guessed_letters = []
     tries = lives
     while not guessed and tries > 0:
+        print(f"Already guessed: {guessed_letters}")
         guess = input("Guess a letter:").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
