@@ -46,7 +46,11 @@ def hangman_logo():
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!\n")
     global name
-    name = input("Enter your nickname: \n")
+    while True:
+        name = input("Enter your name? ")
+        if name.isalpha():
+            break
+        print(style.YELLOW + "You can only use letters in name!" + style.RESET)
     print("\n")
     print(style.CYAN + f"Good Luck, {name}!" + style.RESET)
     print("\n")
