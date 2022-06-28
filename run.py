@@ -65,7 +65,7 @@ def get_word():
 def play(word):
     """
     Plays the game and checks if guessed letters are correct or not
-    Credits for inspiration to: https://youtu.be/m4nEnsavl6w
+    Credits to: https://youtu.be/m4nEnsavl6w
     """
     word_progress = "-" * len(word)
     print(f"The word has {len(word)} letters.")
