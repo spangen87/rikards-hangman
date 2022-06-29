@@ -61,6 +61,7 @@ def get_word():
     """
     Gets a random word from words.txt.
     List generated from https://www.randomlists.com/random-words
+    Creds to: https://github.com/gibbo101/hangman
     """
     random_word = random.choice(open("words.txt", "r").read().split('\n'))
     return random_word.upper()
