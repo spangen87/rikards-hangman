@@ -12,7 +12,7 @@ Welcome to [Rikard's Hangman](https://rikards-hangman.herokuapp.com/)!
 ## Contents
 - [User Experience](#user-experience)
     - [User Stories](#user-stories)
-    - [Wireframes](#wireframesflowchart)
+    - [Wireframes/Flowchart](#wireframesflowchart)
     - [Design](#design)
 - [Features](#features)
     - [Existing Features](#existing-features)
@@ -21,8 +21,8 @@ Welcome to [Rikard's Hangman](https://rikards-hangman.herokuapp.com/)!
         - [Rules](#rules)
         - [Choose Level](#choose-level)
         - [Playing The Game](#playing-the-game)
-        - [Guessing same letter](#guessing-same-letter)
-        - [End of game](#end-of-game)    
+        - [Guessing Same Letter](#guessing-same-letter)
+        - [End of Game](#end-of-game)    
     - [Future Features](#future-features)
 - [Tecnologies Used](#technologies-used)
     - [Main Language](#main-language)
@@ -33,8 +33,8 @@ Welcome to [Rikard's Hangman](https://rikards-hangman.herokuapp.com/)!
     - [Validator Testing](#validator-testing)
     - [Lighthouse](#lighthouse)
 - [Bugs](#bugs)
-    -[Solved](#solved)
-    -[Left to Solve](#left-to-solve)
+    - [Solved](#solved)
+    - [Left to Solve](#left-to-solve)
 - [Deployment](#deployment)
     - [To Deploy The Project](#to-deploy-the-project)
     - [Forking The Repository On GitHub](#forking-the-repository-on-github)
@@ -130,6 +130,8 @@ The design is very limited in this because it's played through the terminal. But
 [Back to top](#contents)
 ### Other Frameworks, Libraries and Software Used
 - Python Standard Library (OS and Random)
+    - OS is used for the colors.
+    - Random is used for getting a random word from word.txt.
 - [Figma](https://www.figma.com/) was used for the flowchart scetch.
 - [Heroku](https://heroku.com/) was used to deploy the live version.
 - [GitHub](https://github.com/) was used for storing my repository.
@@ -177,6 +179,7 @@ In this case I can't take the results to seriously because the HTML, CSS and Jav
 ### Solved
 - Prints that had to be on more rows than one got distorted in the terminal. Solved it by removing indentation on prints that were more than one row.
 - If you were in the menu and made an incorrect input the game started. I solved it by placing it in a while loop that checked that a valid input was given beforde moving on.
+- You could enter numbers or spaces as name. Solved it by adding a loop that checks that only letters are in the name before moving on.
 
 [Back to top](#contents)
 ### Left to Solve
