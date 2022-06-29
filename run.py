@@ -6,7 +6,7 @@ import os
 os.system("")
 
 
-class style():
+class Style():
     """
     Class of fifferent styles
     Creds for solution:
@@ -28,7 +28,7 @@ def hangman_logo():
     """
     Logo for the game. Generated with: https://www.ascii-art-generator.org/
     """
-    print(style.BLUE + """
+    print(Style.BLUE + """
         ____  _ _                 _ _
         |  _ \(_) | ____ _ _ __ __| ( )___
         | |_) | | |/ / _` | '__/ _` |// __|
@@ -41,7 +41,7 @@ def hangman_logo():
         |  _  | (_| | | | | (_| | | | | | | (_| | | | |
         |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
                             |___/
-    """ + style.RESET)
+    """ + Style.RESET)
 
     # Welcoming the player to the game
     print("\nWelcome to Rikard's Hangman!\n")
@@ -50,9 +50,9 @@ def hangman_logo():
         name = input("Enter your name? ")
         if name.isalpha():
             break
-        print(style.YELLOW + "You can only use letters in name!" + style.RESET)
+        print(Style.YELLOW + "You can only use letters in name!" + Style.RESET)
     print("\n")
-    print(style.CYAN + f"Good Luck, {name}!" + style.RESET)
+    print(Style.CYAN + f"Good Luck, {name}!" + Style.RESET)
     print("\n")
     return name
 
@@ -83,15 +83,15 @@ def play(word):
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print(
-                    style.YELLOW + f"""
+                    Style.YELLOW + f"""
 You have already guesssed {guess}. Try another letter.
-                    """ + style.RESET)
+                    """ + Style.RESET)
             elif guess not in word:
-                print(style.RED + f"{guess} is not in the word." + style.RESET)
+                print(Style.RED + f"{guess} is not in the word." + Style.RESET)
                 tries -= 1
                 if tries == 0:
                     # Prints the hangman status
-                    print(style.RED + """
+                    print(Style.RED + """
                     ___________
                     |/        |
                     |         O
@@ -100,10 +100,10 @@ You have already guesssed {guess}. Try another letter.
                     |        / \\
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
 
                 if tries == 1:
-                    print(style.RED + """
+                    print(Style.RED + """
                     ___________
                     |/        |
                     |         O
@@ -112,11 +112,11 @@ You have already guesssed {guess}. Try another letter.
                     |        /
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 2:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/        |
                     |         O
@@ -125,11 +125,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 3:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/        |
                     |         O
@@ -138,11 +138,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 4:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/        |
                     |         O
@@ -151,11 +151,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 5:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/        |
                     |         O
@@ -164,11 +164,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 6:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/
                     |
@@ -177,11 +177,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |\\
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 7:
-                    print(style.RED + """
+                    print(Style.RED + """
                     __________
                     |/
                     |
@@ -190,11 +190,11 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 8:
-                    print(style.RED + """
+                    print(Style.RED + """
                     |/
                     |
                     |
@@ -202,51 +202,51 @@ You have already guesssed {guess}. Try another letter.
                     |
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 9:
-                    print(style.RED + """
+                    print(Style.RED + """
                     |
                     |
                     |
                     |
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 10:
-                    print(style.RED + """
+                    print(Style.RED + """
                     |
                     |
                     |
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 11:
-                    print(style.RED + """
+                    print(Style.RED + """
                     |
                     |
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 if tries == 12:
-                    print(style.RED + """
+                    print(Style.RED + """
                     |
                     ========
-                    """ + style.RESET)
+                    """ + Style.RESET)
                     print(f"You have {tries} live(s) left.")
 
                 guessed_letters.append(guess)
             else:
-                print(style.GREEN + f"""
+                print(Style.GREEN + f"""
 Nicely done! {guess} is in the word!
-                """ + style.RESET)
+                """ + Style.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_progress)
                 indices = [
@@ -258,34 +258,37 @@ Nicely done! {guess} is in the word!
                 if "-" not in word_progress:
                     guessed = True
         else:
-            print(style.YELLOW + "Not a valid guess. Try again." + style.RESET)
+            print(Style.YELLOW + "Not a valid guess. Try again." + Style.RESET)
         print(word_progress)
         print("\n")
     if guessed:
-        print(style.GREEN + """
+        print(Style.GREEN + """
         __  __               _       ___       __
         \ \/ /___  __  __   | |     / (_)___  / /
         \  / __ \/ / / /   | | /| / / / __ \/ /
         / / /_/ / /_/ /    | |/ |/ / / / / /_/
         /_/\____/\__,_/     |__/|__/_/_/ /_(_)
-        """ + style.RESET)
-        print(style.GREEN + f"""
+        """ + Style.RESET)
+        print(Style.GREEN + f"""
 You guessed the word! You win, {name}!
-        """ + style.RESET)
+        """ + Style.RESET)
     else:
-        print(style.RED + """
+        print(Style.RED + """
         __  __               __                          __
         \ \/ /___  __  __   / /   ____  ____  ________  / /
         \  / __ \/ / / /  / /   / __ \/ __ \/ ___/ _ \/ /
         / / /_/ / /_/ /  / /___/ /_/ / /_/ (__  )  __/_/
         /_/\____/\__,_/  /_____/\____/\____/____/\___(_)
-        """ + style.RESET)
-        print(style.RED + f"""
+        """ + Style.RESET)
+        print(Style.RED + f"""
 Sorry {name}, you lost... The word was: {word}.
-        """ + style.RESET)
+        """ + Style.RESET)
 
 
 def show_rules():
+    """
+    Showing the rules for the game
+    """
     print(
         """
     Choose a letter from A to Z.\n
@@ -295,31 +298,31 @@ def show_rules():
     You win if you get all letters right!
     \n
         """)
-    print(style.CYAN + f"Enjoy the game, {name}!" + style.RESET)
-    input(style.YELLOW + "Press ENTER to return to menu.\n" + style.RESET)
+    print(Style.CYAN + f"Enjoy the game, {name}!" + Style.RESET)
+    input(Style.YELLOW + "Press ENTER to return to menu.\n" + Style.RESET)
     menu()
 
 
 def menu():
     """
-    Presents choices to the player
+    Presents choices to see the rules or choosing level
     """
     print("Press 1 to start the game")
     print("Press 2 to show the rules \n")
-    choice = input(style.YELLOW + "Enter number: \n" + style.RESET)
+    choice = input(Style.YELLOW + "Enter number: \n" + Style.RESET)
     global lives
     lives = 0
     if choice == "2":
         show_rules()
     elif choice == "1":
-        print(style.GREEN + "Easy = 12 lives" + style.RESET)
-        print(style.CYAN + "Medium = 8 lives" + style.RESET)
-        print(style.RED + "Hard = 6 lives\n" + style.RESET)
+        print(Style.GREEN + "Easy = 12 lives" + Style.RESET)
+        print(Style.CYAN + "Medium = 8 lives" + Style.RESET)
+        print(Style.RED + "Hard = 6 lives\n" + Style.RESET)
         level = False
         while not level:
-            level = input(style.YELLOW + """
+            level = input(Style.YELLOW + """
 Press E for Easy, M for Medium or H for Hard:
-            """ + style.RESET).upper()
+            """ + Style.RESET).upper()
             if level == "E":
                 level = True
                 lives = 12
@@ -333,10 +336,10 @@ Press E for Easy, M for Medium or H for Hard:
                 lives = 6
                 return lives
             else:
-                print(style.YELLOW + "Please choose E, M or H" + style.RESET)
+                print(Style.YELLOW + "Please choose E, M or H" + Style.RESET)
                 level = False
     else:
-        print(style.YELLOW + "Please choose 1 or 2." + style.RESET)
+        print(Style.YELLOW + "Please choose 1 or 2." + Style.RESET)
         menu()
 
 
@@ -348,8 +351,10 @@ def main():
     word = get_word()
     menu()
     play(word)
+
+    # Give the option to replay
     while input(
-        style.YELLOW + "Start over? (Y/N)" + style.RESET
+        Style.YELLOW + "Start over? (Y/N)" + Style.RESET
                 ).upper() == "Y":
         word = get_word()
         menu()
